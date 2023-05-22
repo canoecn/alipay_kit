@@ -6,14 +6,14 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockAlipayKitPlatform
     with MockPlatformInterfaceMixin
-    implements AlipayKitPlatform {
+    implements ZfbKitPlatform {
   @override
-  Stream<AlipayResp> payResp() {
+  Stream<ZfbResp> payResp() {
     throw UnimplementedError();
   }
 
   @override
-  Stream<AlipayResp> authResp() {
+  Stream<ZfbResp> authResp() {
     throw UnimplementedError();
   }
 
@@ -37,7 +37,7 @@ class MockAlipayKitPlatform
 }
 
 void main() {
-  final AlipayKitPlatform initialPlatform = AlipayKitPlatform.instance;
+  final ZfbKitPlatform initialPlatform = ZfbKitPlatform.instance;
 
   test('$MethodChannelAlipayKit is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelAlipayKit>());
@@ -45,8 +45,8 @@ void main() {
 
   test('isInstalled', () async {
     final MockAlipayKitPlatform fakePlatform = MockAlipayKitPlatform();
-    AlipayKitPlatform.instance = fakePlatform;
+    ZfbKitPlatform.instance = fakePlatform;
 
-    expect(await AlipayKitPlatform.instance.isInstalled(), true);
+    expect(await ZfbKitPlatform.instance.isInstalled(), true);
   });
 }

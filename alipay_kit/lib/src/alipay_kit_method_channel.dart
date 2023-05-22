@@ -5,39 +5,39 @@ import 'package:alipay_kit/src/model/resp.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-/// An implementation of [AlipayKitPlatform] that uses method channels.
-class MethodChannelAlipayKit extends AlipayKitPlatform {
+/// An implementation of [ZfbKitPlatform] that uses method channels.
+class MethodChannelAlipayKit extends ZfbKitPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   late final MethodChannel methodChannel =
       const MethodChannel('v7lin.github.io/alipay_kit')
         ..setMethodCallHandler(_handleMethod);
 
-  final StreamController<AlipayResp> _payRespStreamController =
-      StreamController<AlipayResp>.broadcast();
-  final StreamController<AlipayResp> _authRespStreamController =
-      StreamController<AlipayResp>.broadcast();
+  final StreamController<ZfbResp> _payRespStreamController =
+      StreamController<ZfbResp>.broadcast();
+  final StreamController<ZfbResp> _authRespStreamController =
+      StreamController<ZfbResp>.broadcast();
 
   Future<dynamic> _handleMethod(MethodCall call) async {
     switch (call.method) {
       case 'onPayResp':
-        _payRespStreamController.add(AlipayResp.fromJson(
+        _payRespStreamController.add(ZfbResp.fromJson(
             (call.arguments as Map<dynamic, dynamic>).cast<String, dynamic>()));
         break;
       case 'onAuthResp':
-        _authRespStreamController.add(AlipayResp.fromJson(
+        _authRespStreamController.add(ZfbResp.fromJson(
             (call.arguments as Map<dynamic, dynamic>).cast<String, dynamic>()));
         break;
     }
   }
 
   @override
-  Stream<AlipayResp> payResp() {
+  Stream<ZfbResp> payResp() {
     return _payRespStreamController.stream;
   }
 
   @override
-  Stream<AlipayResp> authResp() {
+  Stream<ZfbResp> authResp() {
     return _authRespStreamController.stream;
   }
 

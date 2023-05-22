@@ -9,14 +9,14 @@ part 'resp.g.dart';
 @JsonSerializable(
   explicitToJson: true,
 )
-class AlipayResp {
-  const AlipayResp({
+class ZfbResp {
+  const ZfbResp({
     this.resultStatus,
     this.result,
     this.memo,
   });
 
-  factory AlipayResp.fromJson(Map<String, dynamic> json) =>
+  factory ZfbResp.fromJson(Map<String, dynamic> json) =>
       _$AlipayRespFromJson(json);
 
   /// 支付状态，参考支付宝的文档https://docs.open.alipay.com/204/105695/

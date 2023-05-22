@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:alipay_kit/alipay_kit.dart';
 import 'package:alipay_kit_example/crypto/rsa.dart';
 
-extension UnsafeAlipayKitPlatform on AlipayKitPlatform {
+extension UnsafeAlipayKitPlatform on ZfbKitPlatform {
   static const String SIGNTYPE_RSA = 'RSA';
   static const String SIGNTYPE_RSA2 = 'RSA2';
 
@@ -25,7 +25,7 @@ extension UnsafeAlipayKitPlatform on AlipayKitPlatform {
     };
     final String param = _param(clone, encoding);
     final String sign = _sign(clone, signType, privateKey);
-    return AlipayKitPlatform.instance.pay(
+    return ZfbKitPlatform.instance.pay(
       orderInfo:
           '$param&sign=${Uri.encodeQueryComponent(sign, encoding: encoding)}',
       isShowLoading: isShowLoading,
@@ -61,7 +61,7 @@ extension UnsafeAlipayKitPlatform on AlipayKitPlatform {
     const Encoding encoding = utf8; // utf-8
     final String param = _param(authInfo, encoding);
     final String sign = _sign(authInfo, signType, privateKey);
-    return AlipayKitPlatform.instance.auth(
+    return ZfbKitPlatform.instance.auth(
       authInfo:
           '$param&sign=${Uri.encodeQueryComponent(sign, encoding: encoding)}',
       isShowLoading: isShowLoading,

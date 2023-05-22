@@ -7,34 +7,34 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 /// * 默认不包含iOS支付
 ///   添加 alipay_kit_ios 依赖，可切换为不包含支付。
 /// * 不含「iOS 支付」调用会抛出 [MissingPluginException]。
-abstract class AlipayKitPlatform extends PlatformInterface {
+abstract class ZfbKitPlatform extends PlatformInterface {
   /// Constructs a AlipayKitPlatform.
-  AlipayKitPlatform() : super(token: _token);
+  ZfbKitPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static AlipayKitPlatform _instance = MethodChannelAlipayKit();
+  static ZfbKitPlatform _instance = MethodChannelAlipayKit();
 
-  /// The default instance of [AlipayKitPlatform] to use.
+  /// The default instance of [ZfbKitPlatform] to use.
   ///
   /// Defaults to [MethodChannelAlipayKit].
-  static AlipayKitPlatform get instance => _instance;
+  static ZfbKitPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [AlipayKitPlatform] when
+  /// platform-specific class that extends [ZfbKitPlatform] when
   /// they register themselves.
-  static set instance(AlipayKitPlatform instance) {
+  static set instance(ZfbKitPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
   /// 支付
-  Stream<AlipayResp> payResp() {
+  Stream<ZfbResp> payResp() {
     throw UnimplementedError('payResp() has not been implemented.');
   }
 
   /// 登录
-  Stream<AlipayResp> authResp() {
+  Stream<ZfbResp> authResp() {
     throw UnimplementedError('authResp() has not been implemented.');
   }
 
