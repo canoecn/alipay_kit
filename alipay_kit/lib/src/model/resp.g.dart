@@ -6,15 +6,14 @@ part of 'resp.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AlipayResp _$AlipayRespFromJson(Map<String, dynamic> json) => AlipayResp(
+ZfbResp _$AlipayRespFromJson(Map<String, dynamic> json) => ZfbResp(
       resultStatus: const NullableStringToNullableIntConverter()
           .fromJson(json['resultStatus'] as String?),
       result: json['result'] as String?,
       memo: json['memo'] as String?,
     );
 
-Map<String, dynamic> _$AlipayRespToJson(AlipayResp instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AlipayRespToJson(ZfbResp instance) => <String, dynamic>{
       'resultStatus': const NullableStringToNullableIntConverter()
           .toJson(instance.resultStatus),
       'result': instance.result,
